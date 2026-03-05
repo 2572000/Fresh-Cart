@@ -1,0 +1,21 @@
+<app-home-main-slider></app-home-main-slider>
+<app-loading [isLoading]="isLoading"></app-loading>
+<div class="container">
+  <div *ngIf="apiErrorMessage" class="alert alert-danger text-center">
+    {{ apiErrorMessage }}
+  </div>
+
+  <app-home-category-slider></app-home-category-slider>
+  <div class="row g-4">
+    <div class="container mt-4">
+      <div class="input-group">
+        <input [(ngModel)]="productSearchTitle" type="text" class="form-control" placeholder="Search products...">
+      </div>
+    </div>
+    <div class="col-md-3 " *ngFor="let product of allproducts|search:productSearchTitle">
+      <app-common-product [product]="product"></app-common-product>
+    </div>
+
+  </div>
+
+</div>

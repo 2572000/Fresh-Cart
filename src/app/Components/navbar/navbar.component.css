@@ -1,0 +1,17 @@
+.cart-icon {
+  transition: 0.3s ease;
+}
+
+.cart-icon:hover {
+  transform: scale(1.1);
+  color: #198754; /* bootstrap success color */
+}
+
+.cart-icon i {
+  font-size: 22px;
+}
+
+.badge {
+  font-size: 11px;
+  padding: 5px 7px;
+}

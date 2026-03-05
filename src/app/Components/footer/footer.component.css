@@ -1,0 +1,109 @@
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 60px 0 0;
+}
+
+.footer h5 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer-logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #0aad0a;
+}
+
+.footer-desc {
+  margin: 15px 0;
+  color: #bbb;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer ul li {
+  margin-bottom: 10px;
+}
+
+.footer ul li a {
+  text-decoration: none;
+  color: #bbb;
+  transition: 0.3s;
+}
+
+.footer ul li a:hover {
+  color: #0aad0a;
+  padding-left: 5px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  background: #222;
+  border-radius: 50%;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: #0aad0a;
+  transform: translateY(-3px);
+}
+
+.newsletter {
+  display: flex;
+  margin-top: 10px;
+}
+
+.newsletter input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.newsletter button {
+  padding: 8px 15px;
+  border: none;
+  background: #0aad0a;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.newsletter button:hover {
+  background: #088f08;
+}
+
+.footer-bottom {
+  background: #0a0a0a;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #aaa;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}

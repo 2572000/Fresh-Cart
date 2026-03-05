@@ -1,0 +1,54 @@
+<div class="product-card product h-100">
+
+  <!-- Image -->
+  <div class="image-wrapper">
+
+    <div class="image-clickable" [routerLink]="['/productDetails', product._id]">
+
+      <img [src]="product.imageCover" alt="{{product.title}}">
+      <span class="price-badge">
+        {{ product.price | addEGP }}
+      </span>
+
+    </div>
+
+   <span class="wishlist-icon"
+      [class.active]="isInWishList(product._id)"
+      (click)="addProductToWishList(product._id)">
+  <i class="fa fa-heart"></i>
+</span>
+
+  </div>
+
+  <!-- Info -->
+  <div class="product-info p-3">
+
+    <h6 class="product-title text-truncate">
+      {{ product.title|sliceTitle:2}}
+    </h6>
+
+    <!-- Category + Brand -->
+    <div class="d-flex gap-2 my-2 flex-wrap">
+      <span class="badge bg-light text-dark border">
+        {{ product.category.name}}
+      </span>
+      <span class="badge bg-dark">
+        {{ product.brand.name |uppercase}}
+      </span>
+    </div>
+
+    <!-- Rating -->
+    <div class="rating mb-3">
+      <i class="fa fa-star" *ngFor="let star of [1,2,3,4,5]; let i = index"
+        [class.text-warning]="i < product.ratingsAverage">
+      </i>
+      <small class="text-muted ms-1">
+        ({{ product.ratingsAverage }})
+      </small>
+    </div>
+
+    <app-add-to-cart-button [productId]="product._id"></app-add-to-cart-button>
+
+  </div>
+
+</div>

@@ -1,0 +1,38 @@
+<div class="card shadow p-4 w-75 mx-auto my-5">
+      <div *ngIf="apiErrorMessage"  class="alert alert-danger alert-dismissible fade show text-center">
+        <p>{{apiErrorMessage}}</p>
+    </div>
+    <h4 class="text-center mb-4">Login</h4>
+
+    <form (ngSubmit)="handleLogin()" [formGroup]="loginForm">
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input formControlName="email" type="email" class="form-control" id="email">
+            <div *ngIf="email?.invalid && email?.touched"  class="text-danger">
+                <p *ngIf="email?.getError('required')"   class="my-0">Email Is Required</p>
+                <p *ngIf="email?.getError('email')"  class="my-0">Pleas Entry Valid Email</p>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input formControlName="password" type="password" class="form-control" id="password">
+            <div *ngIf="password?.invalid && password?.touched"   class="text-danger">
+                <p *ngIf="password?.getError('required')"  class="my-0">password Is Required</p>
+                <p *ngIf="password?.getError('pattern')"   class="my-0">Pleas Entry Valid password</p>
+            </div>
+        </div>
+
+        <button [disabled]="loginForm.invalid ||isLoading" type="submit" class="btn bg-main text-light w-100">
+          <samp *ngIf="!isLoading">Login</samp>
+             <samp *ngIf="isLoading" class="fa-solid fa-spinner fa-spin"></samp>
+        </button>
+
+    </form>
+
+    <div class="text-center mt-3">
+        <small><a class="font-sm" routerLink="/forgotPassword">Forgot Passwords</a></small>
+    </div>
+
+</div>

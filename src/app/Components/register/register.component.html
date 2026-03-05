@@ -1,0 +1,67 @@
+<div class="card shadow p-4 w-75 mx-auto my-3">
+    <div *ngIf="apiErrorMessage" class="alert alert-danger alert-dismissible fade show text-center">
+        <p>{{apiErrorMessage}}</p>
+    </div>
+
+    <h4 class="text-center mb-3">Register Now</h4>
+    <form [formGroup]="registerForm" (ngSubmit)="handelRegistor()">
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input formControlName="name" id="name" type="text" class="form-control">
+            <div *ngIf="name?.touched &&  name?.invalid" class="text-danger">
+                <p *ngIf="name?.getError('required')" class="my-0">Name Is Required</p>
+                <p *ngIf="name?.getError('minlength')" class="my-0">Name Minimum Length Is 3</p>
+                <p *ngIf="name?.getError('maxlength')" class="my-0">Name Maximum Length Is 20</p>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input formControlName="email" id="email" type="email" class="form-control">
+            <div *ngIf="email?.touched &&  email?.invalid" class="text-danger">
+                <p *ngIf="email?.getError('required')" class="my-0">Email Is Required</p>
+                <p *ngIf="email?.getError('email')" class="my-0">Pleas Entry Valid Email</p>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input formControlName="password" id="password" type="password" class="form-control">
+            <div *ngIf="password?.touched &&  password?.invalid" class="text-danger">
+                <p *ngIf="password?.getError('required')" class="my-0">Password Is Required</p>
+                <p *ngIf="password?.getError('pattern')" class="my-0">Pleas Entry Valid password</p>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="rePassword" class="form-label">Confirom Password</label>
+            <input formControlName="rePassword" id="rePassword" type="password" class="form-control">
+            <div *ngIf="rePassword?.touched &&  rePassword?.invalid" class="text-danger">
+                <p *ngIf="rePassword?.getError('required')" class="my-0">Confirom Password Is Required</p>
+                <p *ngIf="rePassword?.getError('pattern')" class="my-0">Pleas Entry Valid password</p>
+            </div>
+            <div *ngIf="registerForm.errors?.['passwordMismatch'] 
+            && registerForm.get('rePassword')?.dirty" class="text-danger">
+                Passwords do not match
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input formControlName="phone" id="phone" type="tel" class="form-control">
+            <div *ngIf="phone?.touched &&  phone?.invalid" class="text-danger">
+                <p *ngIf="phone?.getError('required')" class="my-0">Phone Is Required</p>
+                <p *ngIf="phone?.getError('pattern')" class="my-0">Pleas Entry Valid Phone Number</p>
+            </div>
+        </div>
+
+        <button [disabled]="registerForm.invalid || isLoading" type="submit" class="btn text-light bg-main w-100">
+            <samp *ngIf="!isLoading">Register</samp>
+            <samp *ngIf="isLoading" class="fa-solid fa-spinner fa-spin"></samp>
+        </button>
+    </form>
+    <div class="text-center mt-3">
+        <small>Do You have an account? <a routerLink="/login">Login</a></small>
+    </div>
+</div>

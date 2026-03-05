@@ -1,0 +1,75 @@
+<app-loading [isLoading]="isLoading"></app-loading>
+<div class="cart-container container my-5" *ngIf="cartData">
+
+  <h3 class="fw-bold mb-4">Your Cart</h3>
+
+  <div class="row">
+
+    <!-- Products Section -->
+    <div class="col-lg-8">
+
+      <div class="cart-item" *ngFor="let item of cartData?.products">
+
+        <div class="item-left">
+          <img [src]="item.product.imageCover" alt="product">
+        </div>
+
+        <div class="item-middle">
+
+          <p class="price mb-2">
+            {{ item.price |addEGP}}
+          </p>
+
+          <div class="quantity-control">
+
+            <button (click)="increaseProductCount(item.product._id,item.count-1)">
+              -
+            </button>
+
+            <span>{{ item.count }}</span>
+
+            <button (click)="increaseProductCount(item.product._id,item.count+1)">
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+        <div class="item-right">
+          <button class="remove-btn" (click)="deleteItem(item.product._id)">
+            Remove
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Summary Section -->
+    <div class="col-lg-4">
+      <div class="cart-summary">
+
+        <h5>Total</h5>
+
+        <h3 class="total-price">
+          {{ cartData?.totalCartPrice |addEGP}}
+        </h3>
+
+        <!-- Checkout Button -->
+        <button class="btn btn-success w-100 mt-3" (click)="goToShipping(cartData._id)">
+          Proceed To Shipping
+        </button>
+
+        <button class="btn btn-outline-danger w-100 mt-2" (click)="clearProductItems()">
+          Clear Cart
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>

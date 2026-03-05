@@ -1,0 +1,12 @@
+<button 
+  (click)="addProductToCart()" 
+  [disabled]="isLoading"
+  class="btn bg-main text-light w-100 rounded-pill">
+
+  <span *ngIf="!isLoading">Add To Cart</span>
+
+  <span *ngIf="isLoading">
+    <i class="fas fa-spinner fa-spin"></i> Adding...
+  </span>
+
+</button>

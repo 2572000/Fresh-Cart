@@ -1,0 +1,51 @@
+.wishlist-card {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wishlist-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.wishlist-card img {
+  height: 220px;
+  object-fit: contain;
+  background: #f8f9fa;
+}
+
+.price-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(45deg, #28a745, #20c997);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.remove-icon {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.remove-icon:hover {
+  background: #dc3545;
+  color: #fff;
+}

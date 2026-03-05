@@ -1,0 +1,65 @@
+.main-slider {
+  width: 100%;
+}
+
+.slide-item {
+  position: relative;
+  height: 85vh;
+}
+
+.slide-item img {
+  width: 100%;
+  height: 85vh;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+  display: flex;
+  align-items: center;
+  padding-left: 8%;
+}
+
+.content {
+  color: #fff;
+  max-width: 500px;
+  animation: fadeUp 1s ease;
+}
+
+.content h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.content p {
+  margin: 15px 0;
+  font-size: 18px;
+}
+
+.btn-shop {
+  padding: 12px 30px;
+  background-color: #0aad0a;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-shop:hover {
+  background-color: #088f08;
+  transform: scale(1.05);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

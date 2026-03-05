@@ -1,0 +1,28 @@
+
+<div class="my-5">
+  <h3 class="fw-bold mb-4 text-center section-title">
+    Shop By Category
+  </h3>
+
+  <owl-carousel-o [options]="customOptions" class="category-carousel">
+
+    <ng-container *ngFor="let category of categories">
+      <ng-template carouselSlide>
+
+        <div class="category-card"
+             [routerLink]="['/products']"
+             [queryParams]="{ category: category._id }">
+
+          <img [src]="category.image" class="category-img">
+
+          <div class="category-overlay">
+            <h6>{{ category.name }}</h6>
+          </div>
+
+        </div>
+
+      </ng-template>
+    </ng-container>
+
+  </owl-carousel-o>
+</div>

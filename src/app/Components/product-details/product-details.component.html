@@ -1,0 +1,88 @@
+<app-loading [isLoading]="isLoading"></app-loading>
+<div class="container my-5" *ngIf="product">
+    <div *ngIf="apiErrorMessage" class="alert alert-danger text-center">
+        {{ apiErrorMessage }}
+    </div>
+    <div class="row g-5">
+
+        <!-- LEFT SIDE - IMAGES -->
+        <div class="col-md-4">
+            <div class="p-5 border">
+                <owl-carousel-o [options]="customOptions">
+
+                    <ng-container *ngFor="let productImg of product.images">
+                        <ng-template carouselSlide>
+                            <img [src]="productImg" class="product-img">
+                        </ng-template>
+                    </ng-container>
+                </owl-carousel-o>
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE - DETAILS -->
+        <div class="col-md-8 ">
+
+            <h2 class="fw-bold mb-3">{{ product.title }}</h2>
+
+            <!-- Rating -->
+            <div class="rating mb-3 w-50 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-star" *ngFor="let star of [1,2,3,4,5]; let i = index"
+                        [class.text-warning]="i < product.ratingsAverage">
+                    </i>
+                    <small class="text-muted ms-1">
+                        ({{ product.ratingsAverage }})
+                    </small>
+                </div>
+                <div>
+                    <span class="text-muted">({{ product.ratingsQuantity }} Reviews)</span>
+                </div>
+            </div>
+
+            <!-- Price -->
+            <h3 class="text-success fw-bold mb-3">
+                {{ product.price |addEGP}}
+            </h3>
+
+            <!-- Category + Brand -->
+            <div class="d-flex gap-2 my-2 flex-wrap">
+                <span class="badge bg-light text-dark border p-2">
+                    {{ product.category.name }}
+                </span>
+                <span class="badge bg-dark p-2">
+                    {{ product.brand.name }}
+                </span>
+            </div>
+
+            <!-- Quantity -->
+            <p class="mb-3">
+                <samp [ngClass]="product.quantity > 0 ? 'text-success' : 'text-danger'">
+                    Available: {{product.quantity}}
+                </samp>
+
+            </p>
+
+            <!-- Description -->
+            <div class="mb-4">
+                <p class="text-muted">
+                    {{ product.description }}
+                </p>
+            </div>
+            <app-add-to-cart-button [productId]="product._id">
+            </app-add-to-cart-button>
+
+            <button (click)="addProductToWishList(product._id)" [disabled]="isLoadingButton"
+                class="btn w-100 rounded-pill wishlist-btn my-3">
+
+                <span *ngIf="!isLoadingButton"><i class="fa fa-heart"></i> Add to Wishlist</span>
+
+                <span *ngIf="isLoadingButton">
+                    <i class="fas fa-spinner fa-spin"></i> Adding...
+                </span>
+
+            </button>
+        </div>
+
+    </div>
+</div>

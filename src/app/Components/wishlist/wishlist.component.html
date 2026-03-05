@@ -1,0 +1,31 @@
+<app-loading [isLoading]="isLoading"></app-loading>
+<div class="container my-5">
+
+  <h2 class="mb-4 text-center">My Wishlist ❤️</h2>
+
+  <div *ngIf="wishListProduct.length === 0" class="text-center text-muted">
+    Your wishlist is empty!
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-3" *ngFor="let product of wishListProduct">
+      <div class="wishlist-card position-relative">
+        <img [src]="product.imageCover" class="w-100" alt="{{product.title}}">
+        
+        <span class="price-badge">{{ product.price  }}</span>
+        
+        <span class="remove-icon" (click)="removeFromWishlist(product._id)">
+          <i class="fa fa-times"></i>
+        </span>
+
+        <div class="p-3 text-center">
+          <h6 class="text-truncate">{{ product.title }}</h6>
+          <button class="btn btn-sm btn-success mt-2" (click)="addToCart(product._id)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

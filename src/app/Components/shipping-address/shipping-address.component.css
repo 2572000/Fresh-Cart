@@ -1,0 +1,17 @@
+.shipping-card {
+  background: #ffffff;
+  transition: 0.3s ease;
+}
+
+.shipping-card:hover {
+  transform: translateY(-5px);
+}
+
+.address-item {
+  border-bottom: 1px solid #f1f1f1;
+  padding-bottom: 10px;
+}
+
+.address-item:last-child {
+  border-bottom: none;
+}

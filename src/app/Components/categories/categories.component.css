@@ -1,0 +1,39 @@
+.category-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.4s ease;
+}
+
+.category-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: white;
+  text-align: center;
+  transition: 0.4s ease;
+}
+
+.overlay h5 {
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.category-card:hover .category-img {
+  transform: scale(1.1);
+}
+
+.category-card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
