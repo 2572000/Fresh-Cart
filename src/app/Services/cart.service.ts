@@ -21,26 +21,25 @@ export class CartService {
     })
   }
 
-  headers: any = { token: localStorage.getItem('token') };
 
   addProductToCart(productId: string): Observable<any> {
-    return this._HttpClient.post(this.apiUrl, { productId: productId }, { headers: this.headers });
+    return this._HttpClient.post(this.apiUrl, { productId: productId });
   }
 
   getProductItem():Observable<any>{
-    return this._HttpClient.get(this.apiUrl,{headers:this.headers});
+    return this._HttpClient.get(this.apiUrl);
   }
 
   removeProductItem(productId:string):Observable<any>{
-    return this._HttpClient.delete(`${this.apiUrl}/${productId}`, { headers: this.headers });
+    return this._HttpClient.delete(`${this.apiUrl}/${productId}`);
   }
 
 
    updateCartCount(productId:string,count:number):Observable<any>{
-    return this._HttpClient.put(`${this.apiUrl}/${productId}`,{count:count}, { headers: this.headers });
+    return this._HttpClient.put(`${this.apiUrl}/${productId}`,{count:count});
   }
 
    clearProductItem():Observable<any>{
-    return this._HttpClient.delete(this.apiUrl,{headers:this.headers});
+    return this._HttpClient.delete(this.apiUrl,);
   }
 }
